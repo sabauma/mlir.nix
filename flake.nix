@@ -8,7 +8,7 @@
     let
 
       # git revision to use (for version and git pull
-      gitRevision = "49caf7012170422afa84868598063818f9344228";
+      gitRevision = "llvmorg-17-init";
 
       # to work with older version of flakes
       lastModifiedDate = self.lastModifiedDate or self.lastModified or "19700101";
@@ -36,16 +36,6 @@
         mlir = with final; llvmPackages_14.stdenv.mkDerivation rec {
           name = "mlir-${version}";
 
-          #readOnlySrc = ./.;
-
-          #src = ./.;
-          #src = runCommand "${name}-src-${version}" {} (''
-            #mkdir -p "$out"
-            #cp -r ${readOnlySrc}/cmake "$out"
-            #cp -r ${readOnlySrc}/llvm "$out"
-            #cp -r ${readOnlySrc}/third-party "$out"
-          #'');
-          
           src = fetchFromGitHub {
             owner = "llvm";
             repo = "llvm-project";
@@ -61,7 +51,6 @@
             cmake
             ncurses
             zlib
-            #pkg-config
             llvmPackages_14.llvm
             llvmPackages_14.clang
             llvmPackages_14.bintools
@@ -69,14 +58,6 @@
 
           buildInputs = [ libxml2 ];
 
-          #propagatedBuildInputs = [ ncurses zlib ];
-
-          # where to find libgcc
-          #NIX_LDFLAGS="-L${gccForLibs}/lib/gcc/${targetPlatform.config}/${gccForLibs.version}"; # -L ${zlib}/lib";
-          # teach clang about C startup file locations
-          #CFLAGS="-B${gccForLibs}/lib/gcc/${targetPlatform.config}/${gccForLibs.version} -B ${stdenv.cc.libc}/lib";
-
-          #LD_LIBRARY_PATH="${zlib}/lib:${ncurses}/lib:$LD_LIBRARY_PATH";
 
           cmakeFlags = [
             # "-DGCC_INSTALL_PREFIX=${gcc}"
@@ -97,6 +78,7 @@
             # this makes llvm only to produce code for the current platform, this saves CPU time, change it to what you need
             "-DLLVM_TARGETS_TO_BUILD=X86"
 #            -DLLVM_TARGETS_TO_BUILD="X86;NVPTX;AMDGPU" \
+            # NOTE(feliix42): THIS IS ABI BREAKING!!
             "-DLLVM_ENABLE_ASSERTIONS=ON"
             # Using clang and lld speeds up the build, we recomment adding:
             "-DCMAKE_C_COMPILER=clang"
@@ -110,6 +92,11 @@
             # https://github.com/ClangBuiltLinux/tc-build/issues/150#issuecomment-845418812
             #"-DLLVM_ENABLE_LIBXML2=OFF"
           ];
+
+          # TODO(feliix42): Fix this, as it requires the python package `lit`
+          # postInstall = ''
+          #   cp bin/llvm-lit $out/bin
+          # '';
         };
 
       };
