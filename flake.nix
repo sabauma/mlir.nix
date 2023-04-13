@@ -109,7 +109,7 @@
         });
 
       hydraJobs = {
-        mlir."x86_64-linux" = self.packages.${system}.mlir;
+        mlir."x86_64-linux" = self.packages."x86_64-linux".mlir;
       };
 
       # The default package for 'nix build'. This makes sense if the
