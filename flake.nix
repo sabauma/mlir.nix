@@ -52,9 +52,9 @@
             cmake
             ncurses
             zlib
-            llvmPackages_14.llvm
-            llvmPackages_14.clang
-            llvmPackages_14.bintools
+            llvmPackages_15.llvm
+            llvmPackages_15.clang
+            llvmPackages_15.bintools
           ];
 
           buildInputs = [ libxml2 ];
