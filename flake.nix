@@ -8,8 +8,8 @@
     let
 
       # git revision to use (for version and git pull)
-      gitRevision = "e7f350951b304f0426832b0b6482c8bedf239c23";
-      gitSha256 = "sha256-74kk4VXAiFemdU3isy+6qFLAuYjSfPdSG6wmUOKWD6c=";
+      gitRevision = "b810b668172a25a9ccc716fa216646558f126847";
+      gitSha256 = "sha256-Dfa2/iqUcKL87C9hPDYteQXtdXa8F+sbD/hzrwx56pQ=";
 
       # to work with older version of flakes
       lastModifiedDate = self.lastModifiedDate or self.lastModified or "19700101";
