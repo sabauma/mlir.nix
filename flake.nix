@@ -32,7 +32,7 @@
       # A Nixpkgs overlay.
       overlay = final: prev: {
         mlir = with final; llvmPackages_16.stdenv.mkDerivation {
-          name = "mlir-${version}";
+          name = "llvm-mlir";
 
           src = fetchFromGitHub {
             owner = "llvm";
