@@ -8,14 +8,9 @@
     let
 
       # git revision to use (for version and git pull)
-      gitRevision = "78148064c60353af5ec7505c90119870a5cb536d";
-      gitSha256 = "sha256-7nxrAoUO25h54z2NSM9ob4AqYNaA9e/2V5SKSQsvecE=";
+      gitRevision = "3703e7cb424269740cccaa936db3afc250af5371";
+      gitSha256 = "sha256-5hKxDD/DTHsSj57KVCPk1nINOYoE/x6ksJLclGHeG2U=";
 
-      # to work with older version of flakes
-      lastModifiedDate = self.lastModifiedDate or self.lastModified or "19700101";
-
-      # Generate a user-friendly version number.
-      #version = builtins.substring 0 8 lastModifiedDate;
       version = gitRevision;
 
       # System types to support.
@@ -74,6 +69,7 @@
             "-DCMAKE_C_COMPILER=clang"
             "-DCMAKE_CXX_COMPILER=clang++"
             "-DLLVM_ENABLE_LLD=ON"
+            "-DLLVM_ENABLE_LTO=Full"
           ];
         };
       };
