@@ -8,8 +8,8 @@
     let
 
       # git revision to use (for version and git pull)
-      gitRevision = "f58fb8c209a5179f8f2e02e2a0816c9b1f1edb1b";
-      gitSha256 = "sha256-HjP5JqdN8SShHGYTe8zXCeGZ2BzIp5sTxkVuWz6lCzU=";
+      gitRevision = "19e2174d54356e1654583a65ff9cd38eccf797ee";
+      gitSha256 = "sha256-bVpUNznCrmONvzKAItxCdBb5JigJTVOfxT9xQevGTvs=";
 
       version = gitRevision;
 
