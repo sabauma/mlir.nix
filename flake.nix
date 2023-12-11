@@ -8,8 +8,8 @@
     let
 
       # git revision to use (for version and git pull)
-      gitRevision = "600462a2db7c044896122acfb347ce2d4d88271f";
-      gitSha256 = "sha256-AxLLig7B3vNoL3XdOCUyy5d+uFneS9Dpb26FJdox8cc=";
+      gitRevision = "85c395393480a77736fc7ad10f35e67f6cae6fed";
+      gitSha256 = "sha256-ObMecz8TbcKFbuN6R2XcvhbPWG2qUQmkOg6zAgeshxo=";
 
       version = gitRevision;
 
@@ -61,7 +61,7 @@
             # install tools like FileCheck
             "-DLLVM_INSTALL_UTILS=ON"
             # change this to enable the projects you need
-            "-DLLVM_ENABLE_PROJECTS=mlir"
+            "-DLLVM_ENABLE_PROJECTS=mlir;clang"
             # this makes llvm only to produce code for the current platform, this saves CPU time, change it to what you need
             "-DLLVM_TARGETS_TO_BUILD=X86"
             "-DLLVM_ENABLE_ASSERTIONS=ON"
@@ -75,24 +75,12 @@
       };
 
       # Provide some binary packages for selected system types.
-      packages = forAllSystems (system:
-        {
-          inherit (nixpkgsFor.${system}) mlir;
-        });
+      packages = forAllSystems (system: { inherit (nixpkgsFor.${system}) mlir; });
 
       # The default package for 'nix build'. This makes sense if the
       # flake provides only one package or there is a clear "main"
       # package.
       defaultPackage = forAllSystems (system: self.packages.${system}.mlir);
-
-      # A NixOS module, if applicable (e.g. if the package provides a system service).
-      nixosModules.mlir =
-        { pkgs, ... }:
-        {
-          nixpkgs.overlays = [ self.overlay ];
-
-          environment.systemPackages = [ pkgs.mlir ];
-        };
     };
 }
 
