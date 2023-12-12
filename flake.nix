@@ -61,7 +61,7 @@
             # install tools like FileCheck
             "-DLLVM_INSTALL_UTILS=ON"
             # change this to enable the projects you need
-            "-DLLVM_ENABLE_PROJECTS=mlir;clang"
+            "-DLLVM_ENABLE_PROJECTS=mlir"
             # this makes llvm only to produce code for the current platform, this saves CPU time, change it to what you need
             "-DLLVM_TARGETS_TO_BUILD=X86"
             "-DLLVM_ENABLE_ASSERTIONS=ON"
