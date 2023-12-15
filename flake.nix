@@ -69,6 +69,7 @@
             "-DCMAKE_C_COMPILER=clang"
             "-DCMAKE_CXX_COMPILER=clang++"
             "-DLLVM_ENABLE_LLD=ON"
+            "-DLLVM_PARALLEL_LINK_JOBS=2"
           ];
         };
       };
