@@ -2,7 +2,7 @@
   description = "Custom-Built MLIR";
 
   # Nixpkgs / NixOS version to use.
-  inputs.nixpkgs.url = "nixpkgs/nixos-23.05";
+  inputs.nixpkgs.url = "nixpkgs/nixos-23.11";
 
   outputs = { self, nixpkgs }:
     let
@@ -26,7 +26,7 @@
     {
       # A Nixpkgs overlay.
       overlay = final: prev: {
-        mlir = with final; llvmPackages_16.stdenv.mkDerivation {
+        mlir = with final; llvmPackages_17.stdenv.mkDerivation {
           name = "llvm-mlir";
 
           src = fetchFromGitHub {
@@ -40,9 +40,9 @@
 
           nativeBuildInputs = [
             cmake
-            llvmPackages_16.bintools
-            llvmPackages_16.clang
-            llvmPackages_16.llvm
+            llvmPackages_17.bintools
+            llvmPackages_17.clang
+            llvmPackages_17.llvm
             ncurses
             ninja
             perl
