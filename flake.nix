@@ -8,8 +8,8 @@
     let
 
       # git revision to use (for version and git pull)
-      gitRevision = "cf3421de587d7c947e8f6b5c754393f85a395747";
-      gitSha256 = "sha256-uinOqG7RCOU2NJf33VWFPMwL9PLOwOeyCRlM37AoTq4=";
+      gitRevision = "a2d68b4bece54bcfa7bfde1e80058ab19b6d1775";
+      gitSha256 = "sha256-0koegnNtQVj/ub8pkLfih/6FHCQZ+1zdqlNtJkeGCHU=";
 
       version = gitRevision;
 
@@ -20,7 +20,11 @@
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
 
       # Nixpkgs instantiated for supported system types.
-      nixpkgsFor = forAllSystems (system: import nixpkgs { inherit system; overlays = [ self.overlay ]; });
+      nixpkgsFor = forAllSystems (system:
+        import nixpkgs {
+          inherit system;
+          overlays = [ self.overlay ];
+        });
 
     in
     {
