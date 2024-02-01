@@ -4,15 +4,14 @@
   # Nixpkgs / NixOS version to use.
   inputs.nixpkgs.url = "nixpkgs/nixos-23.11";
 
-  outputs = { self, nixpkgs }:
+  # The LLVM project source code
+  inputs.llvm-project = {
+    url = "github:llvm/llvm-project";
+    flake = false;
+  };
+
+  outputs = { self, nixpkgs, llvm-project }:
     let
-
-      # git revision to use (for version and git pull)
-      gitRevision = "a2d68b4bece54bcfa7bfde1e80058ab19b6d1775";
-      gitSha256 = "sha256-0koegnNtQVj/ub8pkLfih/6FHCQZ+1zdqlNtJkeGCHU=";
-
-      version = gitRevision;
-
       # System types to support.
       supportedSystems = [ "x86_64-linux" ]; #"x86_64-darwin" "aarch64-linux" "aarch64-darwin" ];
 
@@ -33,12 +32,7 @@
         mlir = with final; llvmPackages_17.stdenv.mkDerivation {
           name = "llvm-mlir";
 
-          src = fetchFromGitHub {
-            owner = "llvm";
-            repo = "llvm-project";
-            rev = gitRevision;
-            sha256 = gitSha256;
-          };
+          src = llvm-project;
 
           sourceRoot = "source/llvm";
 
