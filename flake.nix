@@ -17,7 +17,7 @@
     ] (system: let
       pkgs = import nixpkgs { inherit system; };
     in {
-      packages.mlir = pkgs.llvmPackages_17.stdenv.mkDerivation {
+      packages.mlir = pkgs.stdenv.mkDerivation {
         name = "llvm-mlir";
 
         src = llvm-project;
@@ -26,9 +26,12 @@
 
         nativeBuildInputs = with pkgs; [
           cmake
-          llvmPackages_17.bintools
-          llvmPackages_17.clang
-          llvmPackages_17.llvm
+          bintools
+          gcc
+          pkg-config
+          #llvmPackages_17.bintools
+          #llvmPackages_17.clang
+          #llvmPackages_17.llvm
           ncurses
           ninja
           perl
@@ -50,9 +53,9 @@
           "-DLLVM_TARGETS_TO_BUILD=X86"
           "-DLLVM_ENABLE_ASSERTIONS=ON"
           # Using clang and lld speeds up the build, we recomment adding:
-          "-DCMAKE_C_COMPILER=clang"
-          "-DCMAKE_CXX_COMPILER=clang++"
-          "-DLLVM_ENABLE_LLD=ON"
+          "-DCMAKE_C_COMPILER=gcc"
+          "-DCMAKE_CXX_COMPILER=g++"
+          #"-DLLVM_ENABLE_LLD=ON"
           "-DLLVM_PARALLEL_LINK_JOBS=4"
         ];
       };
