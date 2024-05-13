@@ -25,15 +25,15 @@
         sourceRoot = "source/llvm";
 
         nativeBuildInputs = with pkgs; [
-          cmake
           bintools
-          pkg-config
+          cmake
           llvmPackages_18.bintools
           llvmPackages_18.clang
           llvmPackages_18.llvm
           ncurses
           ninja
           perl
+          pkg-config
           python3
           zlib
         ];
