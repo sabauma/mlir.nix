@@ -3,11 +3,11 @@
     "llvm-project": {
       "flake": false,
       "locked": {
-        "lastModified": 1715565378,
-        "narHash": "sha256-ksGInpWYz880o1aejMomhOgVXEphoXfvYWTuZFs/0/c=",
+        "lastModified": 1715597307,
+        "narHash": "sha256-sApwJRJytFbbXPGVmZvu1qcOEYeMgeTmfHKMUYw2nn0=",
         "owner": "llvm",
         "repo": "llvm-project",
-        "rev": "de641e289269061f8bdb138bb5c50e27ef4b354f",
+        "rev": "fcc1baaa99fda4f5633e82f47e8de33c99bbcdd2",
         "type": "github"
       },
       "original": {
@@ -18,16 +18,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1715395895,
-        "narHash": "sha256-DreMqi6+qa21ffLQqhMQL2XRUkAGt3N7iVB5FhJKie4=",
+        "lastModified": 1715447595,
+        "narHash": "sha256-VsVAUQOj/cS1LCOmMjAGeRksXIAdPnFIjCQ0XLkCsT0=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "71bae31b7dbc335528ca7e96f479ec93462323ff",
+        "rev": "062ca2a9370a27a35c524dc82d540e6e9824b652",
         "type": "github"
       },
       "original": {
         "id": "nixpkgs",
-        "ref": "nixos-23.11",
+        "ref": "nixos-unstable",
         "type": "indirect"
       }
     },

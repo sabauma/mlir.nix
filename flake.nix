@@ -2,7 +2,7 @@
   description = "Custom-Built MLIR";
 
   # Nixpkgs / NixOS version to use.
-  inputs.nixpkgs.url = "nixpkgs/nixos-23.11";
+  inputs.nixpkgs.url = "nixpkgs/nixos-unstable";
 
   # The LLVM project source code
   inputs.llvm-project = {
