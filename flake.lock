@@ -3,11 +3,11 @@
     "llvm-project": {
       "flake": false,
       "locked": {
-        "lastModified": 1715597307,
-        "narHash": "sha256-sApwJRJytFbbXPGVmZvu1qcOEYeMgeTmfHKMUYw2nn0=",
+        "lastModified": 1715719384,
+        "narHash": "sha256-xD/IJEwpcQ/q/CNAGeBonNiWA+rSzEsJgm5sftckIto=",
         "owner": "llvm",
         "repo": "llvm-project",
-        "rev": "fcc1baaa99fda4f5633e82f47e8de33c99bbcdd2",
+        "rev": "f918c056f06968763870bc3e6b9f9d7074e1f867",
         "type": "github"
       },
       "original": {
@@ -18,11 +18,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1715447595,
-        "narHash": "sha256-VsVAUQOj/cS1LCOmMjAGeRksXIAdPnFIjCQ0XLkCsT0=",
+        "lastModified": 1715534503,
+        "narHash": "sha256-5ZSVkFadZbFP1THataCaSf0JH2cAH3S29hU9rrxTEqk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "062ca2a9370a27a35c524dc82d540e6e9824b652",
+        "rev": "2057814051972fa1453ddfb0d98badbea9b83c06",
         "type": "github"
       },
       "original": {
