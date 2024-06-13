@@ -61,7 +61,7 @@
 
       packages.default = self.packages.${system}.mlir;
 
-      overlays.default = final: prev: {
+      overlays.mlir = final: prev: {
         mlir = self.packages.${prev.system}.mlir;
       };
     });
