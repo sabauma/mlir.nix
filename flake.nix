@@ -12,11 +12,10 @@
 
   inputs.utils.url = "github:numtide/flake-utils";
 
-  outputs = inputs@{ self, nixpkgs, llvm-project, ... }: inputs.utils.lib.eachSystem [
-      "x86_64-linux" "x86_64-darwin" "aarch64-linux" "aarch64-darwin"
-    ] (system: let
+  outputs = inputs@{ self, nixpkgs, llvm-project, ... }: let
+    outputs = inputs.utils.lib.eachDefaultSystem  (system: let
       pkgs = import nixpkgs { inherit system; };
-    in rec {
+    in {
       packages.mlir = pkgs.stdenv.mkDerivation {
         name = "llvm-mlir";
 
@@ -60,10 +59,11 @@
       };
 
       packages.default = self.packages.${system}.mlir;
-
-      overlays.mlir = final: prev: {
-        mlir = self.packages.${prev.system}.mlir;
-      };
     });
+  in outputs // {
+    overlays.default = final: prev: {
+      mlir = outputs.${prev.system}.mlir;
+    };
+  };
 }
 
