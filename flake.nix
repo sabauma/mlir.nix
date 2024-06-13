@@ -60,6 +60,10 @@
       };
 
       packages.default = self.packages.${system}.mlir;
+
+      overlays.default = final: prev: {
+        mlir = self.packages.${prev.system}.mlir;
+      };
     });
 }
 
