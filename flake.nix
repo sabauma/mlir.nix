@@ -62,7 +62,7 @@
     });
   in outputs // {
     overlays.default = final: prev: {
-      mlir = outputs.packages.${prev.system};
+      mlir = outputs.packages.${prev.system}.mlir;
     };
   };
 }
