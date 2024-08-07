@@ -12,8 +12,8 @@
 
   inputs.utils.url = "github:numtide/flake-utils";
 
-  outputs = inputs@{ self, nixpkgs, llvm-project, ... }: let
-    outputs = inputs.utils.lib.eachDefaultSystem (system: let
+  outputs = { self, nixpkgs, llvm-project, utils, ... }: let
+    outputs = utils.lib.eachDefaultSystem (system: let
       pkgs = import nixpkgs { inherit system; };
     in {
       packages.mlir = pkgs.stdenv.mkDerivation {
