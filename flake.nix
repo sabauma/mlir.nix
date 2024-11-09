@@ -26,9 +26,9 @@
         nativeBuildInputs = with pkgs; [
           bintools
           cmake
-          llvmPackages_18.bintools
-          llvmPackages_18.clang
-          llvmPackages_18.llvm
+          llvmPackages.bintools
+          llvmPackages.clang
+          llvmPackages.llvm
           ncurses
           ninja
           perl
